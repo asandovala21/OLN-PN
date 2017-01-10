@@ -33,10 +33,11 @@ $datos/
     PIB RSEO.dta     // PIB Regional Sectorial Encadenado Original
 ```
 en donde:
-- ``<año>`` representa a un año genérico en formato %4d (por ejemplo, 2015).
-- ``<mes>`` representa a un mes genérico en formato %2d (por ejemplo, 01).
-en caso de utilizar pesos de replicación, ``$bsrweight`` debe organizarse de
-(exactamente) la misma manera.
+- ``<año>`` representa a un año genérico en formato ``%4d`` (por ejemplo, 2015).
+- ``<mes>`` representa a un mes genérico en formato ``%2d`` (por ejemplo, 01).
+
+En caso de utilizar pesos de replicación, ``$bsrweight`` debe organizarse
+(exactamente) de la misma manera.
 
 ----------------
 
