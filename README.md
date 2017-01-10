@@ -35,7 +35,9 @@ $datos/
 en donde:
 - ``<año>`` representa a un año genérico en formato %4d (por ejemplo, 2015).
 - ``<mes>`` representa a un mes genérico en formato %2d (por ejemplo, 01).
-
+en caso de utilizar pesos de replicación, ``$bsrweight`` debe organizarse de
+(exactamente) la misma manera.
 
 ----------------
-¹ Solo necesario si desea estimar varianzas usando bootstrap. 
+
+¹ Solo necesario si desea estimar varianzas usando bootstrap.
