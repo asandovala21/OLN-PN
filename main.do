@@ -1,4 +1,4 @@
-*** PN - Panorama Nacional (script principal)
+* PN - Panorama Nacional (script principal)
 
 *===============================================================================
 * Prólogo
@@ -27,13 +27,13 @@ net install ol_tools,       all force from("`OLNTools'")
 *===============================================================================
 
 * Tablas (dta)
-local files : dir "$proyecto/scripts/tablas" files "tabla 11-08.do"
+local files : dir "$proyecto/src/" files "tabla 03-21.do"
 foreach file of local files {
-	*do "$proyecto/scripts/tablas/`file'"
+	do "$proyecto/src/`file'"
 }
 
 * Tablas (xlsx)
-local files : dir "$proyecto/scripts/tablas" files "tabla 11-08.do"
+local files : dir "$proyecto/src/" files "tabla 03-01.do"
 foreach file of local files {
 	*do "$proyecto/scripts/tablas/`file'"
 }
