@@ -1,15 +1,16 @@
 ## Glosario de Términos
 
-| AE:   | Años de escolaridad.                                     |
+| Sigla | Significado                                              |
 |:----- |:-------------------------------------------------------- |          
-| CC:   | Condición de conmutante                                  |             
-| CISE: | Clasificación internacional de situación de empleo.      |                                         
-| NE:   | Nivel educacional                                        |       
-| RR:   | Región de residencia                                     |          
-| TE:   | Tamaño de empresa (de acuerdo al número de trabajadores) |                                              
-| TCCU: | Trabajadores por cuenta propia unipersonales.            |                                   
-| YOPR: | Ingresos de la ocupación principal.                      |  
-   
+| AE:   | Años de escolaridad.                                     |
+| CC    | Condición de conmutante                                  |             
+| CISE  | Clasificación internacional de situación de empleo.      |                                         
+| NE    | Nivel educacional                                        |       
+| RR    | Región de residencia                                     |          
+| TE    | Tamaño de empresa (de acuerdo al número de trabajadores) |                                              
+| TCCU  | Trabajadores por cuenta propia unipersonales.            |                                   
+| YOPR  | Ingresos de la ocupación principal.                      |  
+
 # Índice de Tablas
 
 ## Empresas
