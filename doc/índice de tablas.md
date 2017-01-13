@@ -1,3 +1,15 @@
+## Glosario de Términos
+
+| AE:   | Años de escolaridad.                                     |
+|:----- |:-------------------------------------------------------- |          
+| CC:   | Condición de conmutante                                  |             
+| CISE: | Clasificación internacional de situación de empleo.      |                                         
+| NE:   | Nivel educacional                                        |       
+| RR:   | Región de residencia                                     |          
+| TE:   | Tamaño de empresa (de acuerdo al número de trabajadores) |                                              
+| TCCU: | Trabajadores por cuenta propia unipersonales.            |                                   
+| YOPR: | Ingresos de la ocupación principal.                      |  
+   
 # Índice de Tablas
 
 ## Empresas
@@ -41,14 +53,3 @@
 19.	Promedio de AE de ocupados conmutantes por RR, 2015
 20.	N° y % de conmutantes por sector, 2015
 21.	N° y % de conmutantes por ocupación, 2015
-
-## Glosario de Términos
-
-* AE:   Años de escolaridad.
-* CC:   Condición de conmutante
-* CISE: Clasificación internacional de situación de empleo.
-* NE:   Nivel educacional
-* RR:   Región de residencia
-* TE:   Tamaño de empresa (de acuerdo al número de trabajadores)
-* TCCU: Trabajadores por cuenta propia unipersonales.
-* YOPR: Ingresos de la ocupación principal.
