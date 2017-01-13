@@ -1,8 +1,8 @@
-## Glosario de Términos
+# Glosario de Términos
 
 | Sigla | Significado                                              |
 |:----- |:-------------------------------------------------------- |          
-| AE:   | Años de escolaridad.                                     |
+| AE    | Años de escolaridad.                                     |
 | CC    | Condición de conmutante                                  |             
 | CISE  | Clasificación internacional de situación de empleo.      |                                         
 | NE    | Nivel educacional                                        |       
@@ -13,17 +13,19 @@
 
 # Índice de Tablas
 
-## Empresas
+## 2. Empresas
 
-01. N° de empresas y ocupados por TE, 2014 (excluyendo TCCU)
-02. N° de empresas y ocupados por TE, 2014 (incluyendo TCCU)
-03. Distribución de ocupados por TE, 2010-2015
-04. Distribución de ocupados por sector, según TE, 2015
-05. Distribución de ocupados por región, según TE, 2015
-06. Distribución de ocupados por TE, según NE, 2015
-07. Distribución de ocupados por TE, según CISE, 2015
-08. Promedio de YOPR por TE, según CISE, 2015
-09. Distribución de ventas, empresas y trabajadores por sector, 2015
+| ID       | Descripción                                                      |
+|:-------- |:---------------------------------------------------------------- |
+| 02-01-01 | N° de empresas y ocupados por TE, 2014 (excluyendo TCCU)         |                       
+| 02-02-01 | N° de empresas y ocupados por TE, 2014 (incluyendo TCCU)         |                       
+| 02-02-01 | Distribución de ocupados por TE, 2010-2015                       |         
+| 02-04-01 | Distribución de ocupados por sector, según TE, 2015              |                  
+| 02-05-01 | Distribución de ocupados por región, según TE, 2015              |                  
+| 02-06-01 | Distribución de ocupados por TE, según NE, 2015                  |              
+| 02-07-01 | Distribución de ocupados por TE, según CISE, 2015                |                
+| 02-08-01 | Promedio de YOPR por TE, según CISE, 2015                        |        
+| 02-09-01 | Distribución de ventas, empresas y trabajadores por sector, 2015 |                               
 
 ## Trabajadores y empleo
 
