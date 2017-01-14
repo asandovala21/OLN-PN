@@ -14,9 +14,8 @@ macros globales:
   * ``$OLNTools``, el directorio en el cual clonó OLN-Tools.
   * ``$datos``, el directorio principal de sus BBDD (vea más abajo).
 
-Una vez hecho aquello, podrá replicar cualquier tabla ejecutando el ``do-file``
-homónimo contenido en ``src/`` (por ejemplo, ``src/tabla 02-01`` replica legal
-tabla 02-01 del PN).
+Una vez hecho aquello, podrá replicar cualquier tabla ejecutando el _do-file_
+homónimo contenido en ``src/``.
 
 Importante
 ----------
