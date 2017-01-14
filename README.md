@@ -8,11 +8,15 @@ Intrucciones de Uso
 
 1. Visite https://github.com/igutierrezm.
 2. Clone los repositorios OLN-PN y OLN-Tools.
-3. Abra ``main.do`` (ubicado dentro del repo OLN-ITD) y edite las siguientes
+3. Abra ``main.do`` (ubicado dentro de ``src/``) y edite las siguientes
 macros globales:
   * ``$proyecto``, el directorio en el cual clonó OLN-PN.
   * ``$OLNTools``, el directorio en el cual clonó OLN-Tools.
-  * ``$datos``, el directorio principal de sus BBDD (CASEN, ENE, ESI, etc.).
+  * ``$datos``, el directorio principal de sus BBDD (vea más abajo).
+
+Una vez hecho aquello, podrá replicar cualquier tabla ejecutando el ``do-file``
+homónimo contenido en ``src/`` (por ejemplo, ``src/tabla 02-01`` replica legal
+tabla 02-01 del PN).
 
 Importante
 ----------
