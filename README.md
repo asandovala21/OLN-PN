@@ -20,12 +20,9 @@ Importante
 OLN-ITD asume que las BBDD dentro de ``$datos`` se organizan como sigue:
 ```
 $datos/
-  CASEN/
-    CASEN <año>.dta          // CASEN genérica
-  ENE/
-    ENE <año> <mes>.dta      // ENE genérica
-  ESI/
-    ESI <año> Personas.dta   // ESI genérica (Base Personas)
+  CASEN/CASEN <año>.dta        // CASEN genérica
+  ENE/ENE <año> <mes>.dta      // ENE genérica
+  ESI/ESI <año> Personas.dta   // ESI genérica (Base Personas)
   PIB/
     PIB NSCO.dta     // PIB Nacional Sectorial Corriente  Original
     PIB NSEO.dta     // PIB Nacional Sectorial Encadenado Original
