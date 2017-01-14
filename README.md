@@ -38,12 +38,5 @@ $datos/
     SII - Estadísticas según subsector.dta
 ```
 en donde:
-- ``<año>`` representa a un año genérico en formato ``%4d`` (e.g., ``2015``).
-- ``<mes>`` representa a un mes genérico en formato ``%2d`` (e.g., ``01``).
-
-En caso de utilizar pesos de replicación, ``$bsrweight`` debe organizarse
-(exactamente) de la misma manera.
-
-----------------
-
-¹ Solo necesario si desea estimar varianzas usando bootstrap.
+- ``<año>`` representa a un año en formato ``%4d`` (por ejemplo, ``2015``).
+- ``<mes>`` representa a un mes en formato ``%2d`` (por ejemplo, ``01``).
