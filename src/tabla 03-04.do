@@ -1,6 +1,9 @@
-* indicadores  : Escolaridad promedio
+* indicadores  : escolaridad promedio
 * subpoblación : ocupados
-* según        : año (2010-2015), mes (2 5 8 11), región
+* años         : 2010 y 2015
+* meses        : 2 5 8 11
+* por          : región
+* según        : año (2010-2015), mes (2 5 8 11)
 * agregaciones : "región"
 * fuente       : ENE
 

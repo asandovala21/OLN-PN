@@ -1,5 +1,7 @@
 * indicadores  : años promedio de escolaridad
 * subpoblación : ocupados
+* años         : 2010 y 2015
+* meses        : 2 5 8 11
 * por          : sector
 * según        : año (2010-2015), mes (2 5 8 11)
 * agregaciones : "sector"

@@ -1,6 +1,9 @@
-* indicadores  : Número y Distribución
+* indicadores  : número y distribución
 * subpoblación : ocupados
-* según        : año (2010-2015), mes (2 5 8 11), nivel educacional
+* años         : 2010 y 2015
+* meses        : 2 5 8 11
+* por          : nivel educacional
+* según        :
 * agregaciones : "tramo de edad"
 * fuente       : ENE
 

@@ -1,5 +1,7 @@
 * indicadores  : número y distribución
 * subpoblación : ocupados
+* años         : 2010 y 2015
+* meses        : 2 5 8 11
 * por          : gran grupo de ocupación (oficio1)
 * según        : año (2010-2015), mes (2 5 8 11), cise
 * agregaciones : "oficio1", "cise", "oficio1, cise"

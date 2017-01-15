@@ -1,5 +1,7 @@
 * indicadores  : número y distribución
 * subpoblación : ocupados
+* años         : 2015
+* meses        : 2 5 8 11
 * por          : condición de conmutante (conmut)
 * según        : año (2010-2015), mes (2 5 8 11), sector
 * agregaciones : "conmut", "sector", "conmut, sector"

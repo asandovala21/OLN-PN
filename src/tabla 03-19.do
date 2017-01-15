@@ -1,5 +1,7 @@
 * indicadores  : escolaridad promedio (años)
 * subpoblación : ocupados conmutantes
+* años         : 2015
+* meses        : 2 5 8 11
 * por          : región de residencia (region)
 * según        : año (2010-2015), mes (2 5 8 11)
 * agregaciones : "region"

@@ -1,7 +1,10 @@
 * indicadores  : fracción de mujeres, edad promedio y escolaridad promedio
 * subpoblación : ocupados
-* según        : año (2010-2015), mes (2 5 8 11)
-* agregaciones : ""
+* años         : 2010-2015
+* meses        : 2 5 8 11
+* por          :
+* según        :
+* agregaciones : 
 * fuente       : ENE
 
 * Especificación

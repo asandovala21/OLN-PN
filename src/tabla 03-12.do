@@ -1,5 +1,7 @@
 * indicadores  : ingreso promedio de la ocupación principal
 * subpoblación : ocupados que mantuvieron su empleo
+* años         : 2010 y 2015
+* meses        : 
 * por          : sector
 * según        : año (2010-2015)
 * agregaciones : "sector"

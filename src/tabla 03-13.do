@@ -1,5 +1,7 @@
 * indicadores  : años promedio de escolaridad
 * subpoblación : ocupados
+* años         : 2015
+* meses        : 2 5 8 11
 * por          : gran grupo de ocupación (oficio1)
 * según        : año (2010-2015), mes (2 5 8 11)
 * agregaciones : "oficio1"
