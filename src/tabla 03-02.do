@@ -30,7 +30,7 @@
 * Estimación
 .table.create
 .table.annualize
-save "$proyecto/data/tabla 03-02-02", replace
+save "$proyecto/data/tabla 03-02", replace
 
 * Exportación
 .table.export_excel bh, file("tabla 03-02")

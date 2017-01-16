@@ -1,32 +1,37 @@
 * indicadores  : número y distribución de ocupados
 * subpoblación : ocupados
-* años         : 2010 2015
-* meses        : 2 5 8 11
-* por          : TEM¹ (excluyendo TCCU²)
+* años         : 2014
+* meses        :
+* por          : TEM[1] (excluyendo TCCU[2])
 * según        :
-* agregaciones : TEM
+* agregaciones : "TEM"
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
-  * Abreviaciones
-  local tem "_tamaño_empresa"
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""total _counter" "proportion `tem'""'
-  .tabla.masks     = `""n ocupados" "% ocupados""'
+  .table.cmds      = `""total _counter" "proportion _tamaño_empresa""'
+  .table.masks     = `""n" "%""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if (_ocupado == 1) & (`tem' != 0)"
-  .tabla.over      = "`tem'"
-  .tabla.aggregate = "`tem'"
+  .table.years     = "2014"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if (_ocupado == 1) & (_tamaño_empresa != 0)"
+  .table.by        = "_tamaño_empresa"
+  .table.along     = ""
+  .table.aggregate = "_tamaño_empresa"
+  * Estructura
+  .table.rowvar    = "_tamaño_empresa"
+  .table.colvar    = "id año"
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "_ocupado `tem'"
+  .table.src       = "ene"
+  .table.varlist0  = "_ocupado _tamaño_empresa"
+
 * Estimación
-.tabla.create
+.table.create
+.table.annualize
+drop if (_tamaño_empresa == 0)
 save "$proyecto/data/tabla 02-01", replace
 
 * Notas al pie
-* ¹. Tamaño de empresa (de acuerdo al número de trabajadores)
-* ². Trabajadores por Cuenta Propia Unipersonales
+* [1] Tamaño de empresa (de acuerdo al número de trabajadores)
+* [2] Trabajadores por Cuenta Propia Unipersonales
