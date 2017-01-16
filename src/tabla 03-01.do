@@ -11,7 +11,7 @@
 .table = .ol_table.new
   * Estadísticas
   .table.cmds      = `""mean _edad" "mean _esc" "mean _mujer""'
-  .table.masks     = `""edad" "escolaridad" "mujeres""'
+  .table.masks     = `""edad promedio" "escolaridad promedio" "% de mujeres""'
   * Dominios
   .table.years     = "2010 2011 2012 2013 2014 2015"
   .table.months    = "2 5 8 11"
@@ -29,7 +29,9 @@
 
 * Estimación
 .table.create
+.table.annualize
 save "$proyecto/data/tabla 03-01", replace
 
 * Exportación
-.table.export_excel bh, file("tabla 03-07")
+replace bh = 100 * bh if (mask == 3)
+.table.export_excel bh, file("tabla 03-01")

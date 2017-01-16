@@ -1,16 +1,16 @@
 * indicadores  : número y distribución
 * subpoblación : ocupados
 * años         : 2015
-* meses        : 2 5 8 11
-* por          : nivel educacional
-* según        : año (2010-2015), mes (2 5 8 11), región
-* agregaciones : "región", "nivel educacional", "región y nivel educacional"
+* meses        :
+* por          : nivel educacional (educ)
+* según        : región
+* agregaciones : "educ", "región", "región x educ"
 * fuente       : ENE
 
 * Especificación
 .table = .ol_table.new
   * Estadísticas
-  .table.cmds      = `""total _counter" "proportion _educ""'
+  .table.cmds      = `""proportion _educ""'
   .table.masks     = `""n ocupados" "% ocupados""'
   * Dominios
   .table.years     = "2015"
@@ -19,6 +19,9 @@
   .table.by        = "_educ"
   .table.along     = "_region_re_v1"
   .table.aggregate = `""_educ" "_region_re_v1" "_educ _region_re_v1""'
+  * Estructura
+  .table.rowvar    = "_region_re_v1"
+  .table.colvar    = "_educ"
   * I-O
   .table.src       = "ene"
   .table.varlist0  = "_educ _ocupado _region_re_v1"
@@ -26,8 +29,8 @@
 
 * Estimación
 .table.create
+.table.annualize
 save "$proyecto/data/tabla 03-05", replace
 
 * Exportación
-.table.export_excel bh,  ///
-  file("tabla 03-07") rowvar("_region_re_v1") colvar("año")
+.table.export_excel bh, file("tabla 03-05")

@@ -1,59 +1,36 @@
-* indicadores  : número y distribución
-* subpoblación : ocupados
+* indicadores  : distribución de personas
+* subpoblación : ocupados o desocupados
 * años         : 2010 y 2015
-* meses        : 2 5 8 11
+* meses        :
 * por          : nivel educacional
-* según        :
-* agregaciones : "tramo de edad"
+* según        : situación de actividad (ocupado vs desocupado)
+* agregaciones : "nivel educacional"
 * fuente       : ENE
 
 * Especificación
 .table = .ol_table.new
   * Estadísticas
-  .table.cmds      = `""total _counter" "proportion _educ""'
-  .table.masks     = `""n ocupados" "% ocupados""'
+  .table.cmds      = `""proportion _educ""'
+  .table.masks     = `""%""'
   * Dominios
-  .table.years     = "2015"
+  .table.years     = "2010 2015"
   .table.months    = "2 5 8 11"
-  .table.subpop    = "if _ocupado == 1"
+  .table.subpop    = "if inrange(_activ, 1, 2)"
   .table.by        = "_educ"
-  .table.along     = ""
+  .table.along     = "_activ"
   .table.aggregate = "_educ"
+  * Estructura
+  .table.rowvar    = "_educ"
+  .table.colvar    = "año _activ"
   * I-O
   .table.src       = "ene"
-  .table.varlist0  = "_ocupado _educ"
+  .table.varlist0  = "_activ _educ"
   cls
 
 * Estimación
 .table.create
-save "$proyecto/data/tabla 03-03-01", replace
+.table.annualize
+save "$proyecto/data/tabla 03-02-03", replace
 
 * Exportación
-.table.export_excel bh,  ///
-  file("tabla 03-07") rowvar("_region_re_v1") colvar("año")
-
-
-
-* indicadores  : Número y Distribución
-* subpoblación : desocupados
-* según        : año (2010-2015), mes (2 5 8 11), nivel educacional
-* agregaciones : "tramo de edad"
-* fuente       : ENE
-
-* Especificación
-.table = .ol_table.new
-  * Estadísticas
-  .table.cmds      = `""total _counter" "proportion _educ""'
-  .table.masks     = `""n desocupados" "% desocupados""'
-  * Dominios
-  .table.years     = "2015"
-  .table.months    = "2 5 8 11"
-  .table.subpop    = "if _desocupado == 1"
-  .table.over      = "_educ"
-  .table.aggregate = "_educ"
-  * I-O
-  .table.src       = "ene"
-  .table.varlist0  = "_desocupado _educ"
-* Estimación
-.table.create
-save "$proyecto/data/tabla 03-03-02", replace
+.table.export_excel bh, file("tabla 03-03")
