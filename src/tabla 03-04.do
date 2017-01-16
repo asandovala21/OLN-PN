@@ -8,19 +8,26 @@
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""mean _esc""'
-  .tabla.masks     = `""escolaridad promedio""'
+  .table.cmds      = `""mean _esc""'
+  .table.masks     = `""escolaridad promedio""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if _ocupado == 1"
-  .tabla.over      = "_region_re_v1"
-  .tabla.aggregate = "_region_re_v1"
+  .table.years     = "2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _ocupado == 1"
+  .table.rowvar    = "_region_re_v1"
+  .table.colvar    = ""
+  .table.aggregate = "_region_re_v1"
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "_esc _ocupado _region_re_v1"
+  .table.src       = "ene"
+  .table.varlist0  = "_esc _ocupado _region_re_v1"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
 save "$proyecto/data/tabla 03-04", replace
+
+* Exportación
+.table.export_excel bh,  ///
+  file("tabla 03-07") rowvar("_region_re_v1") colvar("año")

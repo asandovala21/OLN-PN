@@ -1,28 +1,34 @@
-* indicadores  : número y distribución
+* indicadores  : número y % de conmutantes
 * subpoblación : ocupados
-* años         : 2015
-* meses        : 2 5 8 11
-* por          : condición de conmutante (conmutante)
-* según        : año (2010-2015), mes (2 5 8 11), oficio1
-* agregaciones : "conmutante", "oficio1", "conmutante, oficio1"
+* años         : 2010 2015
+* meses        :
+* por          : gran grupo de ocupación (oficio1)
+* según        :
+* agregaciones : "oficio1"
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
-  * Abreviaciones
-  local comnutante "_conmutante_v1"
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""total _counter" "proportion `comnutante'""'
-  .tabla.masks     = `""n ocupados" "% ocupados""'
+  .table.cmds      = `""total _counter" "proportion _conmutante_v1""'
+  .table.masks     = `""n" "%""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if (_ocupado == 1)"
-  .tabla.over      = "_oficio1 `comnutante'"
-  .tabla.aggregate = `""`comnutante'" "_oficio1" "`comnutante' _oficio1""'
+  .table.years     = "2010 2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if (_ocupado == 1)"
+  .table.rowvar    = "_conmutante_v1"
+  .table.colvar    = "_oficio1"
+  .table.aggregate = "_oficio1"
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "`comnutante' _ocupado _oficio1"
+  .table.src       = "ene"
+  .table.varlist0  = "_conmutante_v1 _ocupado _oficio1"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
+.table.annualize
 save "$proyecto/data/tabla 03-21", replace
+
+* Exportación
+.table.export_excel bh,  ///
+  file("tabla 03-21") rowvar("_oficio1") colvar("año")

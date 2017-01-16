@@ -8,22 +8,31 @@
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""total _counter" "proportion _educ""'
-  .tabla.masks     = `""n ocupados" "% ocupados""'
+  .table.cmds      = `""total _counter" "proportion _educ""'
+  .table.masks     = `""n ocupados" "% ocupados""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if _ocupado == 1"
-  .tabla.over      = "_educ"
-  .tabla.aggregate = "_educ"
+  .table.years     = "2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _ocupado == 1"
+  .table.rowvar    = "_educ"
+  .table.colvar    = ""
+  .table.aggregate = "_educ"
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "_ocupado _educ"
+  .table.src       = "ene"
+  .table.varlist0  = "_ocupado _educ"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
 save "$proyecto/data/tabla 03-03-01", replace
+
+* Exportación
+.table.export_excel bh,  ///
+  file("tabla 03-07") rowvar("_region_re_v1") colvar("año")
+
+
 
 * indicadores  : Número y Distribución
 * subpoblación : desocupados
@@ -32,19 +41,19 @@ save "$proyecto/data/tabla 03-03-01", replace
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""total _counter" "proportion _educ""'
-  .tabla.masks     = `""n desocupados" "% desocupados""'
+  .table.cmds      = `""total _counter" "proportion _educ""'
+  .table.masks     = `""n desocupados" "% desocupados""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if _desocupado == 1"
-  .tabla.over      = "_educ"
-  .tabla.aggregate = "_educ"
+  .table.years     = "2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _desocupado == 1"
+  .table.over      = "_educ"
+  .table.aggregate = "_educ"
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "_desocupado _educ"
+  .table.src       = "ene"
+  .table.varlist0  = "_desocupado _educ"
 * Estimación
-.tabla.create
+.table.create
 save "$proyecto/data/tabla 03-03-02", replace

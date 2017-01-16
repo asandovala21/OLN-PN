@@ -26,8 +26,8 @@ net install ol_tools,       all force from("`OLNTools'")
 * Cuerpo
 *===============================================================================
 
-* Tablas (dta)
-local files : dir "$proyecto/src/" files "tabla 03-07.do"
+* Tablas
+local files : dir "$proyecto/src/" files "tabla 03-10.do"
 foreach file of local files {
 	do "$proyecto/src/`file'"
 }

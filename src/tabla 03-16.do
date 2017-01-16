@@ -1,27 +1,34 @@
 * indicadores  : número y distribución
 * subpoblación : ocupados
-* años         : 2010 y 2015
-* meses        : 2 5 8 11
-* por          : gran grupo de ocupación (oficio1)
-* según        : año (2010-2015), mes (2 5 8 11), cise
-* agregaciones : "oficio1", "cise", "oficio1, cise"
+* años         : 2015
+* meses        :
+* por          : cise (distinguiendo tipo de contrato)
+* según        : gran grupo de ocupación (oficio1)
+* agregaciones : "cise", "oficio1", "oficio1, cise"
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
-  * Abreviaciones
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""total _counter" "proportion _oficio1""'
-  .tabla.masks     = `""n ocupados" "% ocupados""'
+  .table.cmds      = `""proportion _oficio1""'
+  .table.masks     = `""%""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if _ocupado == 1"
-  .tabla.over      = "_cise_v1 _oficio1"
-  .tabla.aggregate = `""_oficio1" "_cise_v1" "_cise_v1 _oficio1""'
+  .table.years     = "2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _ocupado == 1"
+  .table.rowvar    = "_cise_v2"
+  .table.colvar    = "_oficio1"
+  .table.aggregate = `""_cise_v2" "_oficio1" "_cise_v2 _oficio1""'
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "_cise_v1 _ocupado _oficio1"
+  .table.src       = "ene"
+  .table.varlist0  = "_cise_v2 _ocupado _oficio1"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
+.table.annualize
 save "$proyecto/data/tabla 03-16", replace
+
+* Exportación
+.table.export_excel bh, ///
+  file("tabla 03-16") rowvar("_oficio1") colvar("_cise_v2")

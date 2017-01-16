@@ -1,26 +1,33 @@
 * indicadores  : fracción de mujeres, edad promedio y escolaridad promedio
 * subpoblación : ocupados
 * años         : 2010-2015
-* meses        : 2 5 8 11
+* meses        :
 * por          :
 * según        :
-* agregaciones : 
+* agregaciones :
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""mean _mujer" "mean _edad" "mean _esc""'
-  .tabla.masks     = `""fracción mujeres" "edad prom." "escolaridad prom.""'
+  .table.cmds      = `""mean _mujer" "mean _edad" "mean _esc""'
+  .table.masks     = `""fracción mujeres" "edad prom." "escolaridad prom.""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if _ocupado == 1"
-  .tabla.over      = ""
-  .tabla.aggregate = ""
+  .table.years     = "2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _ocupado == 1"
+  .table.rowvar    = ""
+  .table.colvar    = ""
+  .table.aggregate = ""
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "_edad _esc _mujer _ocupado"
+  .table.src       = "ene"
+  .table.varlist0  = "_edad _esc _mujer _ocupado"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
 save "$proyecto/data/tabla 03-01", replace
+
+* Exportación
+.table.export_excel bh,  ///
+  file("tabla 03-07") rowvar("_region_re_v1") colvar("año")

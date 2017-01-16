@@ -1,27 +1,33 @@
 * indicadores  : ingreso promedio de la ocupación principal
 * subpoblación : ocupados que mantuvieron su empleo
 * años         : 2010 y 2015
-* meses        : 
+* meses        :
 * por          : gran grupo de ocupación (oficio1)
-* según        : año (2010-2015)
+* según        :
 * agregaciones : "oficio1"
 * fuente       : ESI
 
 * Especificación
-.tabla = .ol_table.new
-  * Abreviaciones
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""mean _yprincipal""'
-  .tabla.masks     = `""ingreso promedio en la oc. principal (M$)""'
+  .table.cmds      = `""mean _yprincipal""'
+  .table.masks     = `""ingreso promedio de la ocupación principal (M$)""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = ""
-  .tabla.subpop    = "if (_ocupado == 1) & (_mantuvo_empleo == 1)"
-  .tabla.over      = "_oficio1"
-  .tabla.aggregate = `""_oficio1""'
+  .table.years     = "2010 2015"
+  .table.months    = ""
+  .table.subpop    = "if (_ocupado == 1) & (_mantuvo_empleo == 1)"
+  .table.rowvar    = "_oficio1"
+  .table.colvar    = ""
+  .table.aggregate = `""_oficio1""'
   * I-O
-  .tabla.src       = "esi"
-  .tabla.varlist0  = "_ocupado _mantuvo_empleo _oficio1 _yprincipal"
+  .table.src       = "esi"
+  .table.varlist0  = "_ocupado _mantuvo_empleo _oficio1 _yprincipal"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
 save "$proyecto/data/tabla 03-17", replace
+
+* Exportación
+.table.export_excel bh,  ///
+  file("tabla 03-17") rowvar("_region_re_v1") colvar("año")

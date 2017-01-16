@@ -1,27 +1,34 @@
 * indicadores  : años promedio de escolaridad
 * subpoblación : ocupados
 * años         : 2010 y 2015
-* meses        : 2 5 8 11
+* meses        :
 * por          : sector
-* según        : año (2010-2015), mes (2 5 8 11)
+* según        :
 * agregaciones : "sector"
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
-  * Abreviaciones
+.table = .ol_table.new
   * Estadísticas
-  .tabla.cmds      = `""mean _esc""'
-  .tabla.masks     = `""escolaridad promedio (años)""'
+  .table.cmds      = `""mean _esc""'
+  .table.masks     = `""escolaridad promedio (años)""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if _ocupado == 1"
-  .tabla.over      = "_rama1_v1"
-  .tabla.aggregate = `""_rama1_v1""'
+  .table.years     = "2010 2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _ocupado == 1"
+  .table.rowvar    = "_rama1_v1"
+  .table.colvar    = ""
+  .table.aggregate = `""_rama1_v1""'
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "_esc _ocupado _rama1_v1"
+  .table.src       = "ene"
+  .table.varlist0  = "_esc _ocupado _rama1_v1"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
+.table.annualize
 save "$proyecto/data/tabla 03-08", replace
+
+* Exportación
+.table.export_excel bh, ///
+  file("tabla 03-08") rowvar("_rama1_v1") colvar("año")
