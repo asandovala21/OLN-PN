@@ -16,9 +16,12 @@
   .table.years     = "2010 2015"
   .table.months    = "2 5 8 11"
   .table.subpop    = "if (_ocupado == 1)"
-  .table.rowvar    = "_conmutante_v1"
-  .table.colvar    = "_rama1_v1"
+  .table.by        = "_conmutante_v1"
+  .table.along     = "_rama1_v1"
   .table.aggregate = "_rama1_v1"
+  * Estructura
+  .table.rowvar    = "_rama1_v1"
+  .table.colvar    = "año mask"
   * I-O
   .table.src       = "ene"
   .table.varlist0  = "_conmutante_v1 _ocupado _rama1_v1"
@@ -30,5 +33,5 @@
 save "$proyecto/data/tabla 03-20", replace
 
 * Exportación
-.table.export_excel bh,  ///
-  file("tabla 03-20") rowvar("_rama1_v1") colvar("año")
+keep if (_conmutante_v1 == 1)
+.table.export_excel bh, file("tabla 03-20")

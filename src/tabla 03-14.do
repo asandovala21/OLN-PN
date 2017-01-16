@@ -1,24 +1,27 @@
-* indicadores  : número y distribución
+* indicadores  : distribución de ocupados
 * subpoblación : ocupados
 * años         : 2015
 * meses        :
-* por          : gran grupo de ocupación (oficio1)
-* según        : nivel educacional (educ)
-* agregaciones : "oficio1", "educ", "oficio1, educ"
+* por          : nivel educacional (educ)
+* según        : gran grupo de ocupación (oficio1)
+* agregaciones : "educ", "oficio1", "oficio1, educ"
 * fuente       : ENE
 
 * Especificación
 .table = .ol_table.new
   * Estadísticas
-  .table.cmds      = `""proportion _oficio1""'
+  .table.cmds      = `""proportion _educ""'
   .table.masks     = `""%""'
   * Dominios
   .table.years     = "2015"
   .table.months    = "2 5 8 11"
   .table.subpop    = "if _ocupado == 1"
-  .table.rowvar    = "_educ"
-  .table.colvar    = "_oficio1"
+  .table.by        = "_educ"
+  .table.along     = "_oficio1"
   .table.aggregate = `""_educ" "_oficio1" "_educ _oficio1""'
+  * Estructura
+  .table.rowvar    = "_oficio1"
+  .table.colvar    = "_educ"
   * I-O
   .table.src       = "ene"
   .table.varlist0  = "_educ _ocupado _oficio1"
@@ -30,5 +33,4 @@
 save "$proyecto/data/tabla 03-14", replace
 
 * Exportación
-.table.export_excel bh, ///
-  file("tabla 03-14") rowvar("_oficio1") colvar("_educ mask")
+.table.export_excel bh, file("tabla 03-14")

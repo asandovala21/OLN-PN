@@ -16,8 +16,8 @@
   .table.years     = "2015"
   .table.months    = "2 5 8 11"
   .table.subpop    = "if _ocupado == 1"
-  .table.rowvar    = "_educ"
-  .table.colvar    = "_region_re_v1"
+  .table.by        = "_educ"
+  .table.along     = "_region_re_v1"
   .table.aggregate = `""_educ" "_region_re_v1" "_educ _region_re_v1""'
   * I-O
   .table.src       = "ene"

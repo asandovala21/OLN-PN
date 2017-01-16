@@ -16,9 +16,12 @@
   .table.years     = "2010 2015"
   .table.months    = ""
   .table.subpop    = "if (_ocupado == 1) & (_mantuvo_empleo == 1)"
-  .table.rowvar    = "_region_re_v1"
-  .table.colvar    = ""
+  .table.by        = "_region_re_v1"
+  .table.along     = ""
   .table.aggregate = "_region_re_v1"
+  * Estructura
+  .table.rowvar    = "_region_re_v1"
+  .table.colvar    = "año"
   * I-O
   .table.src       = "esi"
   .table.varlist0  = "_mantuvo_empleo _ocupado _region_re_v1 _yprincipal"
@@ -29,5 +32,4 @@
 save "$proyecto/data/tabla 03-07", replace
 
 * Exportación
-.table.export_excel bh,  ///
-  file("tabla 03-07") rowvar("_region_re_v1") colvar("año")
+.table.export_excel bh, file("tabla 03-07")

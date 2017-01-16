@@ -10,15 +10,18 @@
 * Especificación
 .table = .ol_table.new
   * Estadísticas
-  .table.cmds      = `""mean _mujer" "mean _edad" "mean _esc""'
-  .table.masks     = `""fracción mujeres" "edad prom." "escolaridad prom.""'
+  .table.cmds      = `""mean _edad" "mean _esc" "mean _mujer""'
+  .table.masks     = `""edad" "escolaridad" "mujeres""'
   * Dominios
-  .table.years     = "2015"
+  .table.years     = "2010 2011 2012 2013 2014 2015"
   .table.months    = "2 5 8 11"
   .table.subpop    = "if _ocupado == 1"
-  .table.rowvar    = ""
-  .table.colvar    = ""
+  .table.by        = ""
+  .table.along     = ""
   .table.aggregate = ""
+  * Estructura
+  .table.rowvar    = "mask"
+  .table.colvar    = "año"
   * I-O
   .table.src       = "ene"
   .table.varlist0  = "_edad _esc _mujer _ocupado"
@@ -29,5 +32,4 @@
 save "$proyecto/data/tabla 03-01", replace
 
 * Exportación
-.table.export_excel bh,  ///
-  file("tabla 03-07") rowvar("_region_re_v1") colvar("año")
+.table.export_excel bh, file("tabla 03-07")
