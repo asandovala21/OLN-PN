@@ -1,34 +1,42 @@
 * indicadores  : número y distribución de ocupados
 * subpoblación : ocupados
-* años         : 2010-2015
-* meses        : 2 5 8 11
-* por          : TEM [1] (excluyendo TCCU [2])
-* según        : NE [3]
-* agregaciones : "NE", "TEM", "NE, TEM"
+* años         : 2015
+* meses        :
+* por          : nivel educacional (educ)
+* según        : TEM¹ (incluyendo TCCU²)
+* agregaciones : "educ", "TEM", "educ x TEM"
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
+.table = .ol_table.new
   * Abreviaciones
-  local ne  "_educ"
   local tem "_tamaño_empresa"
   * Estadísticas
-  .tabla.cmds      = `""total _counter" "proportion `tem'""'
-  .tabla.masks     = `""n ocupados" "% ocupados""'
+  .table.cmds      = `""total _counter" "proportion _educ""'
+  .table.masks     = `""n ocupados" "% ocupados""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if (_ocupado == 1) & (`tem' != 0)"
-  .tabla.over      = "`ne' `tem'"
-  .tabla.aggregate = `""`tem'" "`ne'" "`tem' `ne'""'
+  .table.years     = "2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _ocupado == 1"
+  .table.by        = "_educ"
+  .table.along     = "`tem'"
+  .table.aggregate = `""_educ" "`tem'" "`tem' _educ""'
+  * Estructura
+  .table.rowvar    = "_educ"
+  .table.colvar    = "`tem' mask"
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "`ne' _ocupado `tem'"
+  .table.src       = "ene"
+  .table.varlist0  = "_educ _ocupado `tem'"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
+.table.annualize
 save "$proyecto/data/tabla 02-06", replace
 
+* Exportación
+.table.export_excel bh, file("tabla 02-06")
+
 * Notas al pie
-* 1. Tamaño de empresa (de acuerdo al número de trabajadores)
-* 2. Trabajadores por Cuenta Propia Unipersonales
-* 3. Nivel educacional
+* ¹ Tamaño de empresa (de acuerdo al número de trabajadores)
+* ² Trabajadores por Cuenta Propia Unipersonales

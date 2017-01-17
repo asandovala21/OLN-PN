@@ -2,7 +2,7 @@
 * subpoblación : ocupados
 * años         : 2014
 * meses        :
-* por          : TEM[1] (excluyendo TCCU[2])
+* por          : TEM¹ (excluyendo TCCU²)
 * según        :
 * agregaciones : "TEM"
 * fuente       : ENE
@@ -33,5 +33,5 @@ drop if (_tamaño_empresa == 0)
 save "$proyecto/data/tabla 02-01", replace
 
 * Notas al pie
-* [1] Tamaño de empresa (de acuerdo al número de trabajadores)
-* [2] Trabajadores por Cuenta Propia Unipersonales
+* ¹ Tamaño de empresa (de acuerdo al número de trabajadores)
+* ² Trabajadores por Cuenta Propia Unipersonales

@@ -1,34 +1,42 @@
-* indicadores  : número y distribución de ocupados
+* indicadores  : distribución de ocupados
 * subpoblación : ocupados
-* años         : 2010-2015
-* meses        : 2 5 8 11
-* por          : TEM [2] (excluyendo TCCU [3])
-* según        : CISE
+* años         : 2015
+* meses        :
+* por          : CISE
+* según        : TEM¹ (incluyendo TCCU²)
 * agregaciones : "TEM", "CISE", "TEM, CISE"
 * fuente       : ENE
 
 * Especificación
-.tabla = .ol_table.new
+.table = .ol_table.new
   * Abreviaciones
-  local cise "_cise_v1"
   local tem  "_tamaño_empresa"
   * Estadísticas
-  .tabla.cmds      = `""total _counter" "proportion `tem'""'
-  .tabla.masks     = `""n ocupados" "% ocupados""'
+  .table.cmds      = `""proportion _cise_v1""'
+  .table.masks     = `""%""'
   * Dominios
-  .tabla.years     = "2015"
-  .tabla.months    = "2 5 8 11"
-  .tabla.subpop    = "if (_ocupado == 1) & (`tem' != 0)"
-  .tabla.over      = " `cise' `tem'"
-  .tabla.aggregate = `""`tem'" "`cise'" "`tem' `cise'""'
+  .table.years     = "2015"
+  .table.months    = "2 5 8 11"
+  .table.subpop    = "if _ocupado == 1"
+  .table.by        = "_cise_v1"
+  .table.along     = "`tem'"
+  .table.aggregate = `""_cise_v1" "`tem'" "_cise_v1 `tem'""'
+  * Estructura
+  .table.rowvar    = "_cise_v1"
+  .table.colvar    = "`tem'"
   * I-O
-  .tabla.src       = "ene"
-  .tabla.varlist0  = "`cise' _ocupado `tem'"
+  .table.src       = "ene"
+  .table.varlist0  = "_cise_v1 _ocupado `tem'"
+  cls
+
 * Estimación
-.tabla.create
+.table.create
+.table.annualize
 save "$proyecto/data/tabla 02-07", replace
 
+* Exportación
+.table.export_excel bh, file("tabla 02-07")
+
 * Notas al pie
-* 1. Nivel educacional
-* 2. Tamaño de empresa (de acuerdo al número de trabajadores)
-* 3. Trabajadores por Cuenta Propia Unipersonales
+* ¹ Tamaño de empresa (de acuerdo al número de trabajadores)
+* ² Trabajadores por Cuenta Propia Unipersonales
