@@ -35,3 +35,4 @@ save "$proyecto/data/tabla 03-01", replace
 * Exportación
 replace bh = 100 * bh if (mask == 3)
 .table.export_excel bh, file("tabla 03-01")
+.table.export_excel cv, file("tabla 03-01")

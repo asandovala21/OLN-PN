@@ -33,3 +33,4 @@ save "$proyecto/data/tabla 03-17", replace
 
 * Exportación
 .table.export_excel bh, file("tabla 03-17")
+.table.export_excel cv, file("tabla 03-17")

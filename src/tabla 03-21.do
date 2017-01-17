@@ -35,3 +35,4 @@ save "$proyecto/data/tabla 03-21", replace
 * Exportación
 keep if (_conmutante_v1 == 1)
 .table.export_excel bh, file("tabla 03-21")
+.table.export_excel cv, file("tabla 03-21")

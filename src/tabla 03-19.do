@@ -64,3 +64,4 @@ save "$proyecto/data/tabla 03-19", replace
 .table.rowvar = "_region_v1"
 .table.colvar = "año dir"
 .table.export_excel bh, file("tabla 03-19")
+.table.export_excel cv, file("tabla 03-19")

@@ -18,6 +18,7 @@ local OLNTools "C:/Users/Pedro/Documents/GitHub/OLN-Tools/src"
 net install ol_tools_casen, all force from("`OLNTools'")
 net install ol_tools_ene,   all force from("`OLNTools'")
 net install ol_tools_esi,   all force from("`OLNTools'")
+net install ol_tools_sii,   all force from("`OLNTools'")
 net install ol_tools,       all force from("`OLNTools'")
 * También puede descargar e instalar los paquetes simultáneamente fijando
 * local OLNTools net from "https://rawgit.com/igutierrezm/OLNTools/master/src"
@@ -27,7 +28,7 @@ net install ol_tools,       all force from("`OLNTools'")
 *===============================================================================
 
 * Tablas
-local files : dir "$proyecto/src/" files "tabla 03-19.do"
+local files : dir "$proyecto/src/" files "tabla *.do"
 foreach file of local files {
 	do "$proyecto/src/`file'"
 }

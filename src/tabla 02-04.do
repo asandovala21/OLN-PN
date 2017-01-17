@@ -13,7 +13,7 @@
   local tem "_tamaño_empresa"
   * Estadísticas
   .table.cmds      = `""proportion `tem'""'
-  .table.masks     = `""% ocupados""'
+  .table.masks     = `""%""'
   * Dominios
   .table.years     = "2015"
   .table.months    = "2 5 8 11"
@@ -36,6 +36,7 @@ save "$proyecto/data/tabla 02-04", replace
 
 * Exportación
 .table.export_excel bh, file("tabla 02-04")
+.table.export_excel cv, file("tabla 02-04")
 
 * Notas al pie
 * ¹ Tamaño de empresa (de acuerdo al número de trabajadores)

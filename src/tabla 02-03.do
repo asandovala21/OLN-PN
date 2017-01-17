@@ -33,6 +33,7 @@ save "$proyecto/data/tabla 02-03", replace
 
 * Exportación
 .table.export_excel bh, file("tabla 02-03")
+.table.export_excel cv, file("tabla 02-03")
 
 * Notas al pie
 * ¹ Tamaño de empresa (de acuerdo al número de trabajadores)

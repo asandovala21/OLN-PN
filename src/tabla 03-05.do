@@ -11,7 +11,7 @@
 .table = .ol_table.new
   * Estadísticas
   .table.cmds      = `""proportion _educ""'
-  .table.masks     = `""n ocupados" "% ocupados""'
+  .table.masks     = `""%""'
   * Dominios
   .table.years     = "2015"
   .table.months    = "2 5 8 11"
@@ -34,3 +34,4 @@ save "$proyecto/data/tabla 03-05", replace
 
 * Exportación
 .table.export_excel bh, file("tabla 03-05")
+.table.export_excel cv, file("tabla 03-05")
