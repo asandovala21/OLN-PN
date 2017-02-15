@@ -1,35 +1,25 @@
 * PN - Panorama Nacional (script principal)
 
-*===============================================================================
-* Prólogo
-*===============================================================================
-
 * Housekeeping
+set scrollbufsize 2000000
 set more off
 clear all
 cls
 
 * Macros globales
-global datos    "C:/Users/Pedro/Documents/Oficina OLN/Datos/Stata"
 global proyecto "C:/Users/Pedro/Documents/GitHub/OLN-PN"
+global datos    "C:/Users/Pedro/Documents/Oficina OLN/Datos/Stata"
+global pkg      "C:/Users/Pedro/Documents/GitHub/OLN-Tools"
 
 * Paquetes externos
-local OLNTools "C:/Users/Pedro/Documents/GitHub/OLN-Tools/src"
-net install ol_tools_casen, all force from("`OLNTools'")
-net install ol_tools_ene,   all force from("`OLNTools'")
-net install ol_tools_esi,   all force from("`OLNTools'")
-net install ol_tools_sii,   all force from("`OLNTools'")
-net install ol_tools,       all force from("`OLNTools'")
-* También puede descargar e instalar los paquetes simultáneamente fijando
-* local OLNTools net from "https://rawgit.com/igutierrezm/OLNTools/master/src"
+foreach pkg in "" "_casen" "_ene" "_esi" "_pib" "_sii" {
+	net install ol_tools`pkg', all force from("$pkg/src")
+}
 
-*===============================================================================
-* Cuerpo
-*===============================================================================
-
-* Tablas
-local files : dir "$proyecto/src/" files "tabla *.do"
+* Consultas y cuadros
+local folder "consultas"
+local files : dir "$proyecto/src/`folder'" files "04-05.do"
 foreach file of local files {
-	do "$proyecto/src/`file'"
+	noisily : do "$proyecto/src/`folder'/`file'"
 }
 beep
