@@ -1,10 +1,9 @@
 * Macros auxiliares
 local id "04-05"
-local varlist "_mujer _discapacitado _indigena _joven _inmigrante"
 
 * Loop principal
 local i = 0
-foreach var in `varlist' {
+foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_inmigrante" {
   * Filtro (de momento, aplazaré el analísis de la discapacidad)
 	local ++i
 	if (`i' == 2) continue
@@ -15,7 +14,7 @@ foreach var in `varlist' {
 	.table.cmds_lb    = "{M$}"
 	.table.years      = "2015"
 	.table.months     = ""
-	.table.subpops    = "{_ocupado}"
+	.table.subpops    = "{if _ocupado == 1}"
 	.table.subpops_lb = "{Ocupados}"
 	.table.by         = ""
 	.table.along      = "`var' _asalariado _educ"

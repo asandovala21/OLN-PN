@@ -1,28 +1,27 @@
 * Macros auxiliares
 local id "04-08"
-local varlist "_mujer _discapacitado _indigena _joven _inmigrante"
 
 * Loop principal
 local i = 0
-foreach var in `varlist' {
+foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_inmigrante" {
   * Filtro (de momento, aplazaré el analísis de la discapacidad)
 	local ++i
 	if (`i' == 2) continue
 
   * Especificación
   .table = .ol_table.new
-  .table.cmds       = "{total _counter}"
-  .table.cmds_lb    = "{N}"
+	.table.cmds       = "{proportion _oficio1}"
+	.table.cmds_lb    = "{%}"
   .table.years      = "2015"
   .table.months     = ""
-  .table.subpops    = "{_ocupado}"
+	.table.subpops    = "{if _ocupado == 1}"
   .table.subpops_lb = "{Ocupados}"
-  .table.by         = ""
-  .table.along      = "_mujer _oficio1"
-  .table.aggregate  = "{_mujer} {_oficio1} {_mujer _oficio1}"
+  .table.by         = "_oficio1"
+  .table.along      = "`var'"
+	.table.aggregate  = "{`var'} {_oficio1} {`var' _oficio1}"
   .table.src        = "casen"
   .table.from       = "$datos"
-  .table.varlist0   = "_mujer _ocupado _oficio1"
+  .table.varlist0   = "`var' _ocupado _oficio1"
 
   * Estimación
 	.table.create

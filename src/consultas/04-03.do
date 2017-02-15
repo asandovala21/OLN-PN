@@ -1,5 +1,5 @@
 * Macros auxiliares
-local id "04-06"
+local id "04-03"
 
 * Loop principal
 local i = 0
@@ -10,18 +10,18 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_inmigrante" {
 
 	* Especificación
 	.table = .ol_table.new
-	.table.cmds       = "{mean _yprincipal} {mean _yprincipal_hr}"
-.table.cmds_lb    = "{Ingresos (M$)} {Ingresos por hora (M$/hr)}"
+  .table.cmds       = "{total _counter} {proportion _razon_inactividad}"
+  .table.cmds_lb    = "{N} {%}"
 	.table.years      = "2015"
 	.table.months     = ""
 	.table.subpops    = "{if _ocupado == 1}"
 	.table.subpops_lb = "{Ocupados}"
-	.table.by         = ""
-	.table.along      = "`var' _asalariado _educ"
-	.table.aggregate  = "{_asalariado} {_educ} {_asalariado _educ}"
+	.table.by         = "_razon_inactividad"
+	.table.along      = "`var'"
+	.table.aggregate  = "{_razon_inactividad}"
 	.table.src        = "casen"
 	.table.from       = "$datos"
-	.table.varlist0   = "_asalariado _educ `var' _ocupado _yprincipal _yprincipal_hr"
+	.table.varlist0   = "_ocupado `var' _razon_inactividad"
 
   * Estimación
 	.table.create
