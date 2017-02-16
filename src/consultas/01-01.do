@@ -18,4 +18,5 @@ local id "01-01"
 
 * Estimación
 .table.create
+replace bh = 100 * bh
 save "$proyecto/data/consultas/`id'.dta", replace

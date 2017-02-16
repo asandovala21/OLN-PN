@@ -8,7 +8,7 @@ local id "01-02"
 .table.years      = "2010 2011 2012 2013 2014 2015 2016"
 .table.months     = "1 2 3 4 5 6 7 8 9 10 11 12"
 .table.subpops    = "{if _ocupado == 1} {if _desocupado == 1} {if _pea == 1}"
-.table.subpops_lb = "{Ocupados} {Desocupados} {PEA}"
+.table.subpops_lb = "{Ocupados (en miles)} {Desocupados (en miles)} {Fuerza de Trabajo (en miles)}"
 .table.by         = ""
 .table.along      = ""
 .table.aggregate  = ""
@@ -18,4 +18,6 @@ local id "01-02"
 
 * Estimación
 .table.create
+replace bh = bh / 1000
+replace cmd_type = "mean"
 save "$proyecto/data/consultas/`id'.dta", replace

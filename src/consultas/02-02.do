@@ -23,14 +23,14 @@ save "$proyecto/data/consultas/`id' [1].dta", replace
 
 * Panel N°2 - Especificación
 .table = .ol_table.new
-.table.cmds       = "{total _counter}"
-.table.cmds_lb    = "{N}"
+.table.cmds       = "{total _counter} {proportion `temp'}"
+.table.cmds_lb    = "{N} {%}"
 .table.years      = "2014"
 .table.months     = ""
 .table.subpops    = "{}"
 .table.subpops_lb = "{Empresas}"
-.table.by         = ""
-.table.along      = "`temp'"
+.table.by         = "`temp'"
+.table.along      = ""
 .table.aggregate  = "{`temp'}"
 .table.src        = "sii"
 .table.from       = "$datos"

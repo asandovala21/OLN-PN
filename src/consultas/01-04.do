@@ -11,11 +11,12 @@ local id "01-04"
 .table.subpops_lb = "{Ocupados}"
 .table.by         = "_cise_v2"
 .table.along      = ""
-.table.aggregate  = "{_cise_v2}"
+.table.aggregate  = ""
 .table.src        = "ene"
 .table.from       = "$datos"
 .table.varlist0   = "_cise_v2 _ocupado"
 
 * Estimación
 .table.create
+drop if (_cise_v2 == 0)
 save "$proyecto/data/consultas/`id'.dta", replace

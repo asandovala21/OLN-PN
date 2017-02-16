@@ -34,19 +34,19 @@ gen_pib_año
 gen_pib_mes
 gen_pib_rama1_v1
 replace _mes = mod(_mes + 1, 12)
-keep if (_año == 2015) & !inlist(_rama1_v1, ., 1e6)
+keep if (_año == 2015) & !inlist(_rama1_v1, .)
 
 * Distribución del PIB por sector, para cada región
 rename pib bh
 collapse (sum) bh if (_año == 2015), by(_rama1_v1)
 quietly : summarize bh
-replace bh = 100 * bh / `r(sum)'
+replace bh = 100 * bh / `r(max)'
+generate subpop_lb = 2
 generate cmd_type = "proportion"
-generate cmd_lb = 2
 
 * Etiquetado
-label define cmd_lb 2 "%"
-label values cmd_lb cmd_lb
+label define subpop_lb 2 "PIB"
+label values subpop_lb subpop_lb
 
 * Guardado
 save "$proyecto/data/consultas/`id' [2].dta", replace

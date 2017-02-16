@@ -8,7 +8,7 @@ gen_pib_mes
 gen_pib_rama1_v2
 gen_pib_region_tr_v1
 replace _mes = mod(_mes + 1, 12)
-keep if (_año == 2014) & !inlist(_rama1_v2, .)
+keep if (_año == 2014) & !inlist(_rama1_v2, ., 1e6)
 preserve
 
 * Distribución del PIB por sector, nación y para cada región
@@ -22,7 +22,11 @@ foreach var in "" "_region_tr_v1" {
   bysort _region_tr_v1 : egen pib_max = max(pib)
   generate bh = 100 * pib / pib_max
   generate cmd_type = "proportion"
+  generate subpop_lb = 1
   generate cmd_lb = 1
+  generate año = 2014
+  generate o2 = 0
+  generate cv = 0
   drop pib*
 
   * Anexión
