@@ -1,12 +1,9 @@
-* Macros auxiliares
-local id "04-02"
-
-* Loop principal
-local i = 0
+* Genera las consultas 0x-02, x = 4, ..., 7
+local i = 3
 foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_inmigrante" {
   * Filtro (de momento, aplazaré el analísis de la discapacidad)
 	local ++i
-	if (`i' == 2) continue
+	if (`i' == 5) continue
 
 	* Especificación
 	.table = .ol_table.new
@@ -25,5 +22,7 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_inmigrante" {
 
   * Estimación
 	.table.create
-	save "$proyecto/data/consultas/`id' [`i'].dta", replace
+	local file "0`i'-02"
+	replace bh = 100 * bh
+	save "$proyecto/data/consultas/`file'.dta", replace
 }

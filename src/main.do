@@ -18,7 +18,7 @@ foreach pkg in "" "_casen" "_ene" "_esi" "_pib" "_sii" {
 
 * Consultas y cuadros
 local folder "cuadros"
-local files : dir "$proyecto/src/`folder'" files "02-08.do"
+local files : dir "$proyecto/src/`folder'" files "04-05.do"
 foreach file of local files {
 	noisily : do "$proyecto/src/`folder'/`file'"
 }

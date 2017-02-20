@@ -5,7 +5,7 @@ local id "03-01"
 .table = .ol_table.new
 .table.cmds       = "."
 .table.cmds_lb    = "."
-.table.years      = "2016"
+.table.years      = "2010 2011 2012 2013 2014 2015 2016"
 .table.months     = "2 5 8 11"
 .table.subpops    = "{if _ocupado == 1}"
 .table.subpops_lb = "{Ocupados}"
