@@ -1,12 +1,12 @@
 * Macros auxiliares y objetos temporales
-local id "01-10"
+local id "01-03"
 
 * Especificación
 .table = .ol_table.new
-.table.rowvar = "_rama1_v2"
-.table.colvar = "_region_tr_v1"
+.table.rowvar = "año mes"
+.table.colvar = "subpop_lb"
 .table.title  = ///
-  "1.10. PIB nominal por región según sector económico (%), 2015"
+  "1.3. Variación (%) 12 meses ocupados y fuerza de trabajo, 2010-2016"
 
 * Exportación
 use "$proyecto/data/consultas/`id'.dta", clear

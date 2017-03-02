@@ -1,22 +1,24 @@
-* Macros auxiliares
-local id   "02-08"
-local temp "_tamaño_empresa_v1"
+* Macros auxiliares y objetos temporales
+local id "02-08"
 
-* Panel N°1 - Especificación
+* Especificación
 .table = .ol_table.new
 .table.cmds       = "{mean _yprincipal}"
-.table.cmds_lb    = "{N}"
+.table.cmds_lb    = "{1: $}"
+.table.cmds_fmt   = "{%15,0fc}"
 .table.years      = "2015"
 .table.months     = ""
-.table.subpops    = "{if _ocupado == 1}"
-.table.subpops_lb = "{Ocupados}"
+.table.subpops    = "{if _mantuvo_empleo == 1}"
+.table.subpops_lb = "{1: Ocupados que mantuvieron su empleo}"
 .table.by         = ""
-.table.along      = "`temp' _cise_v3"
-.table.aggregate  = "{`temp'} {_cise_v3} {`temp' _cise_v3}"
+.table.along      = "_tamaño_empresa _cise_v3"
+.table.margins    = "{_tamaño_empresa} {_cise_v3}"
+.table.margins_lb = "{Total} {Total}"
 .table.src        = "esi"
 .table.from       = "$datos"
-.table.varlist0   = "_cise_v3 _ocupado `temp' _yprincipal"
+.table.varlist0   = "_cise_v3 _mantuvo_empleo _tamaño_empresa _yprincipal"
 
-* Panel N°1 - Estimación
+* Estimación
 .table.create
+.table.add_asterisks
 save "$proyecto/data/consultas/`id'.dta", replace

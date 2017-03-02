@@ -1,34 +1,27 @@
-* Macros auxiliares
+* Macros auxiliares y objetos temporales
 local id "03-06"
-local origen  "$proyecto/data/consultas"
-local destino "$proyecto/data/cuadros"
 
 * Especificación
 .table = .ol_table.new
-.table.rowvar = "_region_re_v1"
-.table.colvar = "_cise_v3"
+.table.cmds       = "{total _counter}"
+.table.cmds_lb    = "{1: N}"
+.table.cmds_fmt   = "{%15,0fc}"
+.table.years      = "2016"
+.table.months     = "2 5 8 11"
+.table.subpops    = "{if _ocupado == 1}"
+.table.subpops_lb = "{1: Ocupados}"
+.table.by         = "_cise_v3"
+.table.along      = "_region_re_v1"
+.table.margins    = "{_region_re_v1} {_cise_v3}"
+.table.margins_lb = "{Nacional} {Total}"
+.table.src        = "ene"
+.table.from       = "$datos"
+.table.varlist0   = "_cise_v3 _ocupado _region_re_v1"
 
-* Preparación de la BBDD
-tempfile df1 df2
-forvalues j = 1(1)2 {
-	use "`origen'/`id'.dta", clear
-	.table.annualize_v`j', over("_cise_v3 _region_re_v1")
-	.table.as_proportion, by("_cise_v3") along("_region_re_v1")
-	save `df`j'', replace
-}
-
-* Exportación
-forvalues j = 1(1)2 {
-	foreach var in bh cv {
-		* Cuerpo
-		use `df`j'', clear
-		local file "`destino'/`name'/`var' [`j'].xlsx"
-		.table.export_excel `var', file("`file'") sheet("`id'")
-
-		* Título
-		putexcel set "`file'", sheet("`id'") modify
-		putexcel A1 = ///
-			"3.6. Distribución de ocupados por región según categoría ocupacional, 2016", ///
-			font("Times New Roman", 11) bold
-	}
-}
+* Estimación
+.table.create
+.table.annualize
+.table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
+.table.add_asterisks
+keep if (cmd_lb == 2)
+save "$proyecto/data/consultas/`id'.dta", replace

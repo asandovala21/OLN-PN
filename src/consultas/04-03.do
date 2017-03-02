@@ -9,19 +9,26 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_inmigrante" {
 	.table = .ol_table.new
   .table.cmds       = "{total _counter} {proportion _razon_inactividad}"
   .table.cmds_lb    = "{N} {%}"
+	.table.cmds_fmt   = "{%15,1fc} {%15,1fc} {%15,1fc}"
 	.table.years      = "2015"
 	.table.months     = ""
 	.table.subpops    = "{if _inactivo == 1}"
-.table.subpops_lb = "{Inactivos}"
+	.table.subpops_lb = "{Inactivos}"
 	.table.by         = "_razon_inactividad"
 	.table.along      = "`var'"
-	.table.aggregate  = "{_razon_inactividad}"
+	.table.margins    = "{_rama1_v1}"
+	.table.margins_lb = "{Nacional}"
 	.table.src        = "casen"
 	.table.from       = "$datos"
 	.table.varlist0   = "_inactivo `var' _razon_inactividad"
 
-  * Estimación
-	.table.create
 	local file "0`i'-03"
-	save "$proyecto/data/consultas/`file'.dta", replace
+	* Estimación
+	.table.create
+	.table.annualize
+	.table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
+	.table.add_asterisks
+	keep if (cmd_lb == 2)
+	save "$proyecto/data/consultas/`id'.dta", replace
+
 }

@@ -1,22 +1,27 @@
-* Macros auxiliares
-local id   "02-07"
-local temp "_tamaño_empresa_v1"
+* Macros auxiliares y objetos temporales
+local id "02-07"
 
 * Especificación
 .table = .ol_table.new
 .table.cmds       = "{total _counter}"
-.table.cmds_lb    = "{N}"
+.table.cmds_lb    = "{1: N}"
+.table.cmds_fmt   = "{%15,0fc}"
 .table.years      = "2016"
 .table.months     = "2 5 8 11"
 .table.subpops    = "{if _ocupado == 1}"
-.table.subpops_lb = "{Ocupados}"
-.table.by         = ""
-.table.along      = "`temp' _cise_v3"
-.table.aggregate  = "{`temp'} {_cise_v3} {`temp' _cise_v3}"
+.table.subpops_lb = "{1: Ocupados}"
+.table.by         = "_cise_v3"
+.table.along      = "_tamaño_empresa"
+.table.margins    = "{_tamaño_empresa} {_cise_v3}"
+.table.margins_lb = "{Nacional} {Total}"
 .table.src        = "ene"
 .table.from       = "$datos"
-.table.varlist0   = "_cise_v3 _ocupado `temp'"
+.table.varlist0   = "_cise_v3 _ocupado _tamaño_empresa"
 
 * Estimación
 .table.create
+.table.annualize
+.table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
+.table.add_asterisks
+keep if (cmd_lb == 2)
 save "$proyecto/data/consultas/`id'.dta", replace
