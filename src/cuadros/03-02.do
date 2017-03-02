@@ -1,15 +1,13 @@
 * Macros auxiliares y objetos temporales
-local id "02-08"
+local id "03-02"
 
 * Especificación
 .table = .ol_table.new
-.table.rowvar = "temp"
-.table.colvar = "_cise_v3"
+.table.rowvar = "_tramo_edad_v1"
+.table.colvar = "año subpop_lb"
 .table.title  = ///
-  "2.8. Ingresos de la ocupación principal" + ///
-  "por categoría ocupacional y tamaño de empresa, 2015"
+  "3.2. Distribución de ocupados y desocupados según tramo de edad, 2010 y 2016"
 
 * Exportación
 use "$proyecto/data/consultas/`id'.dta", clear
-rename _tamaño_empresa temp
 .table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")

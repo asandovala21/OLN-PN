@@ -6,7 +6,8 @@ local id "02-02"
 .table.rowvar = "_tamaño_empresa"
 .table.colvar = "subpop_lb cmd_lb"
 .table.title  = ///
-  "2.1. Número de empresas y ocupados según tamaño de empresa, 2015"
+  "2.2. Número de empresas y ocupados según tamaño de empresa, " + ///
+  "incluyendo trabajadores por cuenta propia unipersonal, 2015"
 
 * Exportación
 use "$proyecto/data/consultas/`id'.dta", clear

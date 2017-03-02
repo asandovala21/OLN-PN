@@ -3,25 +3,11 @@ local id "03-06"
 
 * Especificación
 .table = .ol_table.new
-.table.cmds       = "{total _counter}"
-.table.cmds_lb    = "{1: N}"
-.table.cmds_fmt   = "{%15,0fc}"
-.table.years      = "2016"
-.table.months     = "2 5 8 11"
-.table.subpops    = "{if _ocupado == 1}"
-.table.subpops_lb = "{1: Ocupados}"
-.table.by         = "_cise_v3"
-.table.along      = "_region_re_v1"
-.table.margins    = "{_region_re_v1} {_cise_v3}"
-.table.margins_lb = "{Nacional} {Total}"
-.table.src        = "ene"
-.table.from       = "$datos"
-.table.varlist0   = "_cise_v3 _ocupado _region_re_v1"
+.table.rowvar = "_region_re_v1"
+.table.colvar = "_cise_v3"
+.table.title  = ///
+  "3.6. Distribución de ocupados por región según categoría ocupacional, 2016"
 
-* Estimación
-.table.create
-.table.annualize
-.table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
-.table.add_asterisks
-keep if (cmd_lb == 2)
-save "$proyecto/data/consultas/`id'.dta", replace
+* Exportación
+use "$proyecto/data/consultas/`id'.dta", clear
+.table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")

@@ -1,13 +1,12 @@
 * Macros auxiliares y objetos temporales
-local id "02-08"
+local id "03-17"
 
 * Especificación
 .table = .ol_table.new
-.table.rowvar = "temp"
-.table.colvar = "_cise_v3"
+.table.rowvar = "_oficio1"
+.table.colvar = "año"
 .table.title  = ///
-  "2.8. Ingresos de la ocupación principal" + ///
-  "por categoría ocupacional y tamaño de empresa, 2015"
+  "3.17. Promedio de ingresos de la ocupación principal según ocupación, 2010-2015"
 
 * Exportación
 use "$proyecto/data/consultas/`id'.dta", clear
