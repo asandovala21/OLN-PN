@@ -10,5 +10,4 @@ local id "03-17"
 
 * Exportación
 use "$proyecto/data/consultas/`id'.dta", clear
-rename _tamaño_empresa temp
 .table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")
