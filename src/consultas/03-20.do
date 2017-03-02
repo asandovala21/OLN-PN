@@ -23,5 +23,5 @@ local id "03-20"
 .table.annualize
 .table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
 .table.add_asterisks
-keep if (cmd_lb == 2) & (_conmutante_v1 == 1)
+keep if (_conmutante_v1 == 1)
 save "$proyecto/data/consultas/`id'.dta", replace
