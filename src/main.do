@@ -22,7 +22,7 @@ foreach pkg in "" "_casen" "_ene" "_esi" "_pib" "_sii" {
 foreach folder in "cuadros" {
 	local files : dir "$proyecto/src/`folder'" files "*.do", respectcase
 	foreach file of local files {
-		if !inlist("`file'", "02-06.do") continue
+		if !inlist("`file'", "02-01.do") continue
 		do "$proyecto/src/`folder'/`file'"
 	}
 }
