@@ -1,5 +1,6 @@
 * Macros auxiliares y objetos temporales
 local id "03-12"
+local inflacion = 25426.52 / 21356.86
 
 * Especificación
 .table = .ol_table.new
@@ -20,6 +21,6 @@ local id "03-12"
 
 * Estimación
 .table.create
-.table.annualize
 .table.add_asterisks
+replace bh = `inflacion' * bh if (año == 2010)
 save "$proyecto/data/consultas/`id'.dta", replace
