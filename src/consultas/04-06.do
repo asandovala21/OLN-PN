@@ -1,34 +1,33 @@
-* Genera las consultas 0x-06, x = 4, ..., 7
-local i = 3
-foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_inmigrante" {
-  * Filtro (de momento, aplazaré el analísis de la discapacidad)
-	local ++i
-	if (`i' == 5) continue
+** Genera las consultas 04-06, 05-06, 06-06, 07-06, 08-06.
 
+* Macros auxiliares y objetos temporales
+tempfile df
+local i = 4
+
+* Loop principal
+drop _all
+save `df', replace emptyok
+foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	* Especificación
 	.table = .ol_table.new
 	.table.cmds       = "{mean _yprincipal} {mean _yprincipal_hr}"
-	.table.cmds_lb    = "{Ingresos (M$)} {Ingresos por hora (M$/hr)}"
-	.table.cmds_fmt   = "{%15,1fc} {%15,1fc} {%15,1fc}"
+	.table.cmds_lb    = "{1: Ingreso} {2: Ingreso por hora}"
+	.table.cmds_fmt   = "{%15,0fc} {%15,0fc}"
 	.table.years      = "2015"
 	.table.months     = ""
-	.table.subpops    = "{if _ocupado == 1}"
-	.table.subpops_lb = "{Ocupados}"
+	.table.subpops    = "{if inlist(_cise_v1, 2, 3) & (`var' == 1)}"
+.table.subpops_lb = "{1: Grupo prioritario (Asalariados + Cuenta Propia)}"
 	.table.by         = ""
-	.table.along      = "`var' _asalariado _educ"
-	.table.margins    = "{_rama1_v1}"
-	.table.margins_lb = "{Nacional}"
+	.table.along      = "_cise_v1 _educ"
+	.table.margins    = "{_educ}"
+	.table.margins_lb = "{Total}"
 	.table.src        = "casen"
 	.table.from       = "$datos"
-	.table.varlist0   = "_asalariado _educ `var' _ocupado _yprincipal _yprincipal_hr"
+	.table.varlist0   = "_cise_v1 _educ _yprincipal _yprincipal_hr `var'"
 
-	local file "0`i'-06"
 	* Estimación
 	.table.create
-	.table.annualize
-	.table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
 	.table.add_asterisks
-	keep if (cmd_lb == 2)
-	save "$proyecto/data/consultas/`id'.dta", replace
-
+	save "$proyecto/data/consultas/0`i'-06.dta", replace
+	local ++i
 }

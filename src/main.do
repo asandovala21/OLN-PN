@@ -20,9 +20,9 @@ foreach pkg in "" "_casen" "_ene" "_esi" "_pib" "_sii" {
 
 * Cuadros
 foreach folder in "cuadros" {
-	local files : dir "$proyecto/src/`folder'" files "*.do", respectcase
+	local files : dir "$proyecto/src/`folder'" files "04-*.do", respectcase
 	foreach file of local files {
-		if !inlist("`file'", "03-07.do", "03-12.do", "03-17.do") continue
+		*if !inlist("`file'", "04-01.do") continue
 		do "$proyecto/src/`folder'/`file'"
 	}
 }
