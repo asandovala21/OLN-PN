@@ -4,10 +4,12 @@ local by5 "condición de discapacidad"
 local by6 "pertenencia a pueblos indígenas"
 local by7 "condición de joven"
 local by8 "condición de inmigrante"
-local i = 4
+local i = 3
 
 * Loop principal
 foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
+  local ++i
+  if (`i' == 7) continue
   * Especificación
   .table = .ol_table.new
   .table.rowvar = "`var' cmd_lb"
@@ -20,5 +22,4 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
   local id "0`i'-02"
   use "$proyecto/data/consultas/`id'.dta", clear
   .table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")
-  local ++i
 }

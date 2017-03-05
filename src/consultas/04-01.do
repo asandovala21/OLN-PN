@@ -1,12 +1,7 @@
 ** Genera las consultas 04-01, 05-01, 06-01, 07-01, 08-01.
 
-* Macros auxiliares y objetos temporales
-tempfile df
-local i = 4
-
 * Loop principal
-drop _all
-save `df', replace emptyok
+local i = 4
 foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	* Especificación
 	.table = .ol_table.new
@@ -30,9 +25,15 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	.table.src        = "casen"
 	.table.from       = "$datos"
 	.table.varlist0   = "_desocupado _ocupado _pea _pet `var'"
+	if inlist(`i', 4, 7) {
+		.table.years      = "2010 2011 2012 2013 2014 2015 2016"
+		.table.months     = "2 5 8 11"
+		.table.src        = "ene"
+	}
 
 	* Estimación
 	.table.create
+	if inlist(`i', 4, 7) .table.annualize
 	.table.add_asterisks
 	replace bh = 100 * bh
 	save "$proyecto/data/consultas/0`i'-01.dta", replace

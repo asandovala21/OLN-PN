@@ -1,12 +1,7 @@
 ** Genera las consultas 04-05, 05-05, 06-05, 07-05, 08-05.
 
-* Macros auxiliares y objetos temporales
-tempfile df
-local i = 4
-
 * Loop principal
-drop _all
-save `df', replace emptyok
+local i = 4
 foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	* Especificación
 	.table = .ol_table.new
