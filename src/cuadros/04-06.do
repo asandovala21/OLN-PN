@@ -1,4 +1,4 @@
-/* * Macros auxiliares y objetos temporales
+* Macros auxiliares y objetos temporales
 local by4 "sexo"
 local by5 "condición de discapacidad"
 local by6 "pertenencia a pueblos indígenas"
@@ -17,8 +17,15 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
   "`i'.6. Brecha de ingresos por `by`i'' para trabajadores dependientes " + ///
   "y por cuenta propia según nivel educacional, 2015"
 
-  * Exportación
+  * BBDD
   local id "0`i'-06"
   use "$proyecto/data/consultas/`id'.dta", clear
+  keep bh cmd_fmt _educ cmd_lb _cise_v1 `var'
+  reshape wide bh, i(cmd_fmt _educ cmd_lb _cise_v1) j(`var')
+  generate bh = 100 * (bh1 - bh0) / bh0
+  generate asterisk = ""
+  replace cmd_fmt = "%15,1fc"
+
+  * Exportación
   .table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")
-} */
+}
