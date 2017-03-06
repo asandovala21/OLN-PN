@@ -20,11 +20,11 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
   * BBDD
   local id "0`i'-06"
   use "$proyecto/data/consultas/`id'.dta", clear
-  keep bh cmd_fmt _educ cmd_lb _cise_v1 `var'
-  reshape wide bh, i(cmd_fmt _educ cmd_lb _cise_v1) j(`var')
+  keep bh _educ cmd_lb _cise_v1 `var'
+  reshape wide bh, i(_educ cmd_lb _cise_v1) j(`var')
   generate bh = 100 * (bh1 - bh0) / bh0
+  generate cmd_fmt = "%15,1fc"
   generate asterisk = ""
-  replace cmd_fmt = "%15,1fc"
 
   * Exportación
   .table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")

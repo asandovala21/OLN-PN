@@ -5,7 +5,7 @@ tempfile df
 *===============================================================================
 * Panel N°1 - Empresas
 *==============================================================================
-
+/*
 * Especificación
 .table = .ol_table.new
 .table.cmds       = "{total _counter} {proportion _tamaño_empresa}"
@@ -25,7 +25,7 @@ tempfile df
 
 * Estimación
 .table.create
-save `df', replace
+save `df', replace */
 
 *===============================================================================
 * Panel N°2 - Ocupados
@@ -50,10 +50,10 @@ save `df', replace
 
 * Estimación
 .table.create
-.table.annualize
+/* .table.annualize
 .table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
 .table.add_asterisks
 
 * Consolidación
 append2 using `df'
-save "$proyecto/data/consultas/`id'.dta", replace
+save "$proyecto/data/consultas/`id'.dta", replace */

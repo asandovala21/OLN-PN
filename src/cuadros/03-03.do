@@ -4,7 +4,7 @@ local id "03-03"
 * Especificación
 .table = .ol_table.new
 .table.rowvar = "_educ"
-.table.colvar = "año subpop_lb"
+.table.colvar = "subpop_lb año"
 .table.title  = ///
   "3.3. Distribución ocupados y desocupados según nivel educacional (%), 2010 y 2016"
 

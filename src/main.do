@@ -8,8 +8,8 @@ clear all
 cls
 
 * Macros globales
-global datos    "C:/Users/Pedro/Documents/Oficina OLN/Datos/Stata"
-global GitHub   "C:/Users/Pedro/Documents/GitHub"
+global datos    "C:/Users/observatorio02/Documents/BBDD/Stata"
+global GitHub   "C:/Users/observatorio02/Documents/GitHub"
 global OLNTools "$GitHub/OLN-Tools"
 global proyecto "$GitHub/OLN-PN"
 
@@ -19,10 +19,10 @@ foreach pkg in "" "_casen" "_ene" "_esi" "_pib" "_sii" {
 }
 
 * Cuadros
-foreach folder in "cuadros" {
-	local files : dir "$proyecto/src/`folder'" files "04-*.do", respectcase
+foreach folder in "consultas" {
+	local files : dir "$proyecto/src/`folder'" files "02-*.do", respectcase
 	foreach file of local files {
-		if !inlist("`file'", "04-06.do") continue
+		if !inlist("`file'", "02-01.do") continue
 		do "$proyecto/src/`folder'/`file'"
 	}
 }

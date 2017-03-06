@@ -3,8 +3,8 @@ local id "02-07"
 
 * Especificación
 .table = .ol_table.new
-.table.rowvar = "temp"
-.table.colvar = "_cise_v3"
+.table.rowvar = "_cise_v3"
+.table.colvar = "temp"
 .table.title  = ///
   "2.7. Distribución de ocupados por tamaño de empresa" + ///
   "según categoría ocupacional, 2015"

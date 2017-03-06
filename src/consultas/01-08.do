@@ -20,7 +20,7 @@ generate cmd_fmt   = "%15,1fc"
 generate cmd_lb    = 1
 
 * Etiquetado
-label define cmd_lb 1 "% PIB", modify
+label define cmd_lb 1 "PIB", modify
 label values cmd_lb cmd_lb
 
 * Guardado
@@ -50,7 +50,7 @@ save `df', replace
 * Estimación
 .table.create
 .table.annualize
-.table.add_proportions, cmd_lb("2: % Ocupados") cmd_fmt("%15,1fc")
+.table.add_proportions, cmd_lb("2: Ocupados") cmd_fmt("%15,1fc")
 .table.add_asterisks
 keep if (cmd_lb == 2)
 
