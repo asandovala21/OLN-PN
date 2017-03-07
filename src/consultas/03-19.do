@@ -5,11 +5,9 @@ local lb2 "{2: Salen de la región}"
 local i = 1
 tempfile df
 
-* BBDD (inicialización)
+* Loop principal
 drop _all
 save `df', emptyok
-
-* Loop principal
 foreach var in "_region_re_v1" "_region_tr_v1" {
   * Especificación
   .table = .ol_table.new
@@ -23,7 +21,7 @@ foreach var in "_region_re_v1" "_region_tr_v1" {
   .table.by         = ""
   .table.along      = "`var'"
   .table.margins    = "{`var'}"
-  .table.margins_lb = "{Nacional}"
+  .table.margins_lb = "{Total}"
   .table.src        = "ene"
   .table.from       = "$datos"
   .table.varlist0   = "_conmutante_v1 _esc `var'"
@@ -36,11 +34,13 @@ foreach var in "_region_re_v1" "_region_tr_v1" {
   * Ajustes finales
   rename `var' region
   label variable region "Región"
+  label copy `var' region, replace
+  label define region .z "Total", modify
+  label values region region
 
   * Anexión
   append2 using `df'
   save `df', replace
   local ++i
 }
-
 save "$proyecto/data/consultas/`id'.dta", replace

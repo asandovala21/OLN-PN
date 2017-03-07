@@ -18,7 +18,7 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
     "según nivel educacional, 2015"
 
   * Exportación
-  local id "`i'-09"
+  local id "0`i'-09"
   use "$proyecto/data/consultas/`id'.dta", clear
   .table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")
 }

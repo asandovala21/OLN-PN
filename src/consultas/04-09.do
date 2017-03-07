@@ -20,11 +20,11 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	.table.from       = "$datos"
 	.table.varlist0   = "_educ _ocupado `var'"
 	if inlist(`i', 4, 7) {
-		.table.cmds       = "{total _counter}"
-		.table.cmds_lb    = "{1: N}"
-		.table.years      = "2010 2011 2012 2013 2014 2015 2016"
-		.table.months     = "2 5 8 11"
-		.table.src        = "ene"
+		.table.cmds     = "{total _counter}"
+		.table.cmds_lb  = "{1: N}"
+		.table.years    = "2016"
+		.table.months   = "2 5 8 11"
+		.table.src      = "ene"
 	}
 
 	* Estimación

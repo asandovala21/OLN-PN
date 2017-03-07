@@ -17,7 +17,7 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
     "`i'.7. Distribución de ocupados por `by`i'' según sector económico, 2015"
 
   * Exportación
-  local id "`i'-07"
+  local id "0`i'-07"
   use "$proyecto/data/consultas/`id'.dta", clear
   .table.export_excel bh, file("$proyecto/data/cuadros/bh.xlsx") sheet("`id'")
 }

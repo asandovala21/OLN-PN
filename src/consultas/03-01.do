@@ -7,11 +7,9 @@ local lb4 "4: Mujeres (%)"
 tempfile df
 local i = 1
 
-* df (inicialización)
+* Loop principal
 drop _all
 save `df', emptyok
-
-* Loop principal
 foreach var in "_edad" "_esc" "_superior_completa" "_mujer" {
   * Especificación
   .table = .ol_table.new
