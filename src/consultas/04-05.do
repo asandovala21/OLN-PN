@@ -19,6 +19,7 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	.table.src        = "casen"
 	.table.from       = "$datos"
 	.table.varlist0   = "_educ _ocupado _yprincipal `var'"
+	if inlist(`i', 4, 7) .table.src = "esi"
 
 	* Estimación
 	.table.create

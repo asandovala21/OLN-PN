@@ -32,8 +32,16 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 		.table.create
 		if (`i' == 4) .table.annualize
 		if (`i' == 4) .table.add_proportions, cmd_lb("2: %") cmd_fmt("%15,1fc")
-		if (`i' == 4) keep if (cmd_lb == 2)
+		fillin _razon_inactividad cmd_lb `var'
+		replace subpop_lb = 1         if (_fillin == 1)
+		replace cmd_fmt   = "%15,0fc" if (_fillin == 1)
+		replace cmd_type  = "total"   if (_fillin == 1)
+		replace año       = 2015      if (_fillin == 1)
+		replace bh        = 0         if (_fillin == 1)
+		replace n         = 0         if (_fillin == 1)
+		drop _fillin
 		.table.add_asterisks
+		drop if (`var' == 1e5)
 	}
 	save "$proyecto/data/consultas/0`i'-03.dta", replace
 	local ++i

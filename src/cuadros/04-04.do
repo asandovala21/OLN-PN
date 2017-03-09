@@ -15,7 +15,7 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
   .table.colvar = "_cise_v3"
   .table.title  =  ///
     "`i'.4. Distribución de ocupados por `by`i'' " +  ///
-    "según cateogoría ocupacional, 2015"
+    "según categoría ocupacional, 2015"
 
   * Exportación
   local id "0`i'-04"

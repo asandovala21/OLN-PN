@@ -20,5 +20,13 @@ local id "07-03"
 
 * Estimación
 .table.create
+fillin _razon_inactividad _mujer cmd_lb
+replace subpop_lb = 1         if (_fillin == 1)
+replace cmd_fmt   = "%15,0fc" if (_fillin == 1)
+replace cmd_type  = "total"   if (_fillin == 1)
+replace año       = 2015      if (_fillin == 1)
+replace bh        = 0         if (_fillin == 1)
+replace n         = 0         if (_fillin == 1)
+drop _fillin
 .table.add_asterisks
 save "$proyecto/data/consultas/`id'.dta", replace

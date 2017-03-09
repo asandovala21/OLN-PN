@@ -38,6 +38,7 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	}
 	.table.add_asterisks
 	replace bh = 100 * bh
+	drop if (`var' == 1e5)
 	save "$proyecto/data/consultas/0`i'-01.dta", replace
 	local ++i
 }

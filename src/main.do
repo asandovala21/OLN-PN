@@ -1,4 +1,4 @@
-* PN - Panorama Nacional (script principal)
+ * PN - Panorama Nacional (script principal)
 
 * Housekeeping
 set scrollbufsize 2000000
@@ -19,12 +19,13 @@ foreach pkg in "" "_casen" "_ene" "_esi" "_pib" "_sii" {
 	net install ol_tools`pkg', all force from("$OLNTools/src")
 }
 
-* Cuadros
-foreach folder in "cuadros" {
-	local files : dir "$proyecto/src/`folder'" files "04-*.do", respectcase
+* Consultas y Cuadros
+foreach folder in "consultas" "cuadros" {
+	local files : dir "$proyecto/src/`folder'" files "*.do", respectcase
 	foreach file of local files {
-		*if !inlist("`file'", "04-07.do", "04-08.do", "04-09.do") continue
-		do "$proyecto/src/`folder'/`file'"
+		if regexm("`file'", "07-0[2-3].do") {
+			do "$proyecto/src/`folder'/`file'"
+		}
 	}
 }
 beep

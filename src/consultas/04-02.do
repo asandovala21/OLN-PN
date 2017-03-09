@@ -1,8 +1,12 @@
 ** Genera las consultas 04-02, 05-02, 06-02, 08-02.
 
 * Loop principal
-local i = 4
+local i = 3
 foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
+	* Filtro
+	local ++i
+	if (`i' == 7) continue
+
 	* Especificación
 	.table = .ol_table.new
 	.table.cmds =  ///
@@ -31,13 +35,16 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 		.table.src      = "ene"
 	}
 
-	* Estimación
-	if (`i' != 7) {
-		.table.create
-		if (`i' == 4) .table.annualize
-		.table.add_asterisks
-		replace bh = 100 * bh
-	}
+	* Estimaci+on
+	.table.create
+	if (`i' == 4) .table.annualize
+	replace bh = 100 * bh
+	.table.add_asterisks
+
+	* Ajustes
+	recode `var' (1 = -1)
+	drop if (`var' == 1e5)
+	local lb : label `var' 1
+	label define `var' -1 "`lb'", modify
 	save "$proyecto/data/consultas/0`i'-02.dta", replace
-	local ++i
 }
