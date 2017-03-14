@@ -2,6 +2,7 @@
 
 * Loop principal
 local i = 4
+local me = "_mantuvo_empleo"
 foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	* Especificación
 	.table = .ol_table.new
@@ -19,7 +20,12 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	.table.src        = "casen"
 	.table.from       = "$datos"
 	.table.varlist0   = "_educ _ocupado _yprincipal `var'"
-	if inlist(`i', 4, 7) .table.src = "esi"
+	if inlist(`i', 4, 7) {
+		.table.src        = "esi"
+		.table.subpops    = "{if `me' == 1}"
+		.table.subpops_lb = "{2: Ocupados que mantuvieron su empleo}"
+		.table.varlist0   = "_educ `me' _yprincipal `var'"
+	}
 
 	* Estimación
 	.table.create

@@ -10,13 +10,13 @@ local id "02-03"
 .table.months     = "2 5 8 11"
 .table.subpops    = "{if _ocupado == 1}"
 .table.subpops_lb = "{1: Ocupados}"
-.table.by         = "_tamaño_empresa"
+.table.by         = "_tamano_empresa"
 .table.along      = ""
-.table.margins    = "{_tamaño_empresa}"
+.table.margins    = "{_tamano_empresa}"
 .table.margins_lb = "{Total}"
 .table.src        = "ene"
 .table.from       = "$datos"
-.table.varlist0   = "_ocupado _tamaño_empresa"
+.table.varlist0   = "_ocupado _tamano_empresa"
 
 * Estimación
 .table.create

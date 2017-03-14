@@ -11,12 +11,12 @@ local id "02-08"
 .table.subpops    = "{if _mantuvo_empleo == 1}"
 .table.subpops_lb = "{1: Ocupados que mantuvieron su empleo}"
 .table.by         = ""
-.table.along      = "_tamaño_empresa _cise_v3"
-.table.margins    = "{_tamaño_empresa} {_cise_v3}"
+.table.along      = "_tamano_empresa _cise_v3"
+.table.margins    = "{_tamano_empresa} {_cise_v3}"
 .table.margins_lb = "{Total} {Total}"
 .table.src        = "esi"
 .table.from       = "$datos"
-.table.varlist0   = "_cise_v3 _mantuvo_empleo _tamaño_empresa _yprincipal"
+.table.varlist0   = "_cise_v3 _mantuvo_empleo _tamano_empresa _yprincipal"
 
 * Estimación
 .table.create

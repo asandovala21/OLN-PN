@@ -2,6 +2,7 @@
 
 * Loop principal
 local i = 4
+local me = "_mantuvo_empleo"
 foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	* Especificación
 	.table = .ol_table.new
@@ -11,7 +12,7 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	.table.years      = "2015"
 	.table.months     = ""
 	.table.subpops    = "{if inlist(_cise_v1, 2, 3)"
-	.table.subpops_lb = "{1: Asalariados + Cuenta Propia}"
+	.table.subpops_lb = "{1: Ocupados}"
 	.table.by         = ""
 	.table.along      = "_cise_v1 _educ `var'"
 	.table.margins    = "{_educ}"
@@ -19,7 +20,12 @@ foreach var in "_mujer" "_discapacitado" "_indigena" "_joven" "_extranjero" {
 	.table.src        = "casen"
 	.table.from       = "$datos"
 	.table.varlist0   = "_cise_v1 _educ _yprincipal _yprincipal_hr `var'"
-	if inlist(`i', 4, 7) .table.src = "esi"
+	if inlist(`i', 4, 7) {
+		.table.src        = "esi"
+		.table.subpops    = "{if inlist(_cise_v1, 2, 3) & (`me' == 1)}"
+		.table.subpops_lb = "{2: Ocupados que mantuvieron su empleo}"
+		.table.varlist0   = "_cise_v1 _educ `me' _yprincipal _yprincipal_hr `var'"
+	}
 
 	* Estimación
 	.table.create

@@ -3,7 +3,7 @@ local id "02-01"
 
 * Especificación
 .table = .ol_table.new
-.table.rowvar = "_tamaño_empresa"
+.table.rowvar = "_tamano_empresa"
 .table.colvar = "subpop_lb cmd_lb"
 .table.title  = ///
   "2.1. Número de empresas y ocupados según tamaño de empresa, 2015"
